@@ -11,7 +11,6 @@ import {
   Image,
   FlatList,
 } from "react-native";
-import Constants from "expo-constants";
 
 export default function App() {
   let data = [
@@ -61,7 +60,7 @@ export default function App() {
     },
   ];
 
-  const [clicked, set_clicked] = React.useState(false);
+  const [clicked, setClicked] = useState(false);
 
   function SortYear(x) {
     return clicked ? x.sort((a, b) => a.modelYear - b.modelYear) : x;
@@ -117,7 +116,7 @@ export default function App() {
         </View>
       </ScrollView>
       <View>
-        <Button title="Sort By Year" onPress={() => set_clicked(true)} />
+        <Button title="Sort By Year" onPress={() => setClicked(true)} />
       </View>
     </SafeAreaView>
   );
