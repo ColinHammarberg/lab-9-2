@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import {
   View,
   StyleSheet,
-  StatusBar,
   SafeAreaView,
   Text,
   ScrollView,
   Button,
-  TextInput,
   Image,
   FlatList,
 } from "react-native";
@@ -20,10 +18,12 @@ export default function App() {
       price: 72000,
       img: require("./pictures/bmw.jpeg"),
       publishDate: "19/10/2020",
-      carFuel: "Diesel",
       modelYear: "2022",
-      color: "Red",
-      accidents: "None",
+      carInfo: {
+        carFuel: "Diesel",
+        color: "Red",
+        accidents: "None",
+      },
     },
     {
       title: "Porsche",
@@ -31,10 +31,12 @@ export default function App() {
       price: 120000,
       img: require("./pictures/porsche-preview.webp"),
       publishDate: "21/10/2020",
-      carFuel: "Gasoline",
       modelYear: "1992",
-      color: "Yellow",
-      accidents: "Year: 1998, Frontcrash (Medium crash)",
+      carInfo: {
+        carFuel: "Gasoline",
+        color: "Yellow",
+        accidents: "Year: 1998, Frontcrash (Medium crash)",
+      },
     },
     {
       title: "BMW",
@@ -42,10 +44,12 @@ export default function App() {
       price: 102000,
       img: require("./pictures/bmw.jpeg"),
       publishDate: "20/10/2020",
-      carFuel: "Diesel",
       modelYear: "1999",
-      color: "Black",
-      accidents: "None",
+      carInfo: {
+        carFuel: "Diesel",
+        color: "Black",
+        accidents: "None",
+      },
     },
     {
       title: "Porsche",
@@ -53,10 +57,12 @@ export default function App() {
       price: 86000,
       img: require("./pictures/porsche-preview.webp"),
       publishDate: "23/10/2020",
-      carFuel: "Diesel",
       modelYear: "1997",
-      color: "Grey",
-      accidents: "None",
+      carInfo: {
+        carFuel: "Diesel",
+        color: "Grey",
+        accidents: "None",
+      },
     },
   ];
 
@@ -110,9 +116,9 @@ export default function App() {
                 location={item.location}
                 price={item.price}
                 img={item.img}
-                color={item.color}
-                accidents={item.accidents}
-                carFuel={item.carFuel}
+                color={item.carInfo.color}
+                accidents={item.carInfo.accidents}
+                carFuel={item.carInfo.carFuel}
                 modelYear={item.modelYear}
                 publishDate={item.publishDate}
                 style={styles.component}
@@ -122,7 +128,10 @@ export default function App() {
         </View>
       </ScrollView>
       <View>
-        <Button title="Sort By Year" onPress={() => setClicked(true)} />
+        <Button
+          title="Sort By Year"
+          onPress={() => setClicked((clicked) => !clicked)}
+        />
       </View>
     </SafeAreaView>
   );
